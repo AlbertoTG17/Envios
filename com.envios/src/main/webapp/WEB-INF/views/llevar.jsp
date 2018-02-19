@@ -9,11 +9,11 @@
 <h2>Introduce los datos</h2>
 	
 	<form action="listarPaquetesLugar">
-		Origen: <input id="origin-input" class="controls" type="text"
+		Origen: <input id="origin-input" class="controls" type="text" size="40"
 		        placeholder="Introduce una localización de origen" name="origen">
 		
 		<br>
-		Destino<input id="destination-input" class="controls" type="text"
+		Destino<input id="destination-input" class="controls" type="text" size="40"
 		        placeholder="Introduce una localización de destino" name="destino">
 		        
 		        <input type="submit" value="Buscar">
