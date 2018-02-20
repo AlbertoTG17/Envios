@@ -31,6 +31,13 @@
 			<div id="map"></div>
 
 		</form>
+		
+		<form action="<%=request.getContextPath()%>/appLogout" method="POST">
+			<input type="submit" value="Logout" />
+			 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+		</form> 
+		
+		<a href="inicio">Inicio</a>
 
 	</div> 
         

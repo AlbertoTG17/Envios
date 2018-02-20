@@ -22,7 +22,9 @@
 	         
 	 </form>
 	 
-	 <a href="listarPaquetes">Ver todos</a>
+	 <a href="listarPaquetes">Ver todos</a> <br>
+	 
+	 <a href="inicio">Inicio</a>
         
  <script type="text/javascript">
         

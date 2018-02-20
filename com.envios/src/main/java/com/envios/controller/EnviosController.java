@@ -1,5 +1,6 @@
 package com.envios.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -8,6 +9,7 @@ import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +22,14 @@ public class EnviosController {
 	
 	@Autowired
 	private PaqueteService paqueteService;
+	
+	@RequestMapping(value="/inicio")
+	public String principal() {
+		//Redireccion hacia el jsp del formulario
+		return "redirect:index.jsp";
+	}
+	
+	
 	
 //	private Twitter twitter;
 //
@@ -69,18 +79,26 @@ public class EnviosController {
 	
 	//MAPEOS DE ENTREGAR
 	
-	@RequestMapping(value="/resistrarTwitter")
-	public String twitterRegistry(Model model) {
+	@RequestMapping(value="/resistrar")
+	public String registry(Model model) {
 				
 				
 		return "";
 	}
 	
 	@RequestMapping(value="/entregarPaquete")
-	public String entregarPaquete() {
+	public String entregarPaquete(Authentication auth) {
+		
+		auth.getPrincipal();
 		//Redireccion hacia el form de insertar paquetes
 		return "insertPaquete";
 	}
+	
+	@RequestMapping(value="/error")
+	public String error() {
+ 		return "access-denied";
+ 	}
+		
 	
 	@RequestMapping(value="/registrarPaquete")
 	public String registrarPaquete(HttpServletRequest request) {
@@ -90,7 +108,9 @@ public class EnviosController {
 		String origen = request.getParameter("origen");
 		String destino = request.getParameter("destino");
 		
-		DateFormat formato = new SimpleDateFormat("yyyy/dd/MM");
+		
+		//Parseo de fecha
+		DateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
 		
 		Date fecha = null;
 		
@@ -101,10 +121,10 @@ public class EnviosController {
 		}
 		
 		Paquete paquete = new Paquete(tamaño, fecha, origen, destino);
-		
-		System.out.println("----> " + paquete.getFechaEntrega());
-		
+						
 		paqueteService.insert(paquete);
+		
+		System.out.println("----> Registro insertado");
 		
 		return "redirect:index.jsp";
 	}

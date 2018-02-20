@@ -27,6 +27,8 @@
 		
 		</table>
 		
+		<a href="inicio">Inicio</a>
+		
 		<input type="hidden" name="origen" value="${paq.origen}">
 		<input type="hidden" name="destino" value="${paq.destino}">
 	

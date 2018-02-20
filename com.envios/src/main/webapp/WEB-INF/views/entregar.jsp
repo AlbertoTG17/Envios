@@ -19,6 +19,8 @@
 		<form action="entregarPaquete">
 			<input type="submit" value="Entregar">
 		</form>
+		
+		<a href="inicio">Inicio</a>
 	
 	</div>
 	

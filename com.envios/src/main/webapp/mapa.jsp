@@ -19,6 +19,8 @@
 		  &origin=<%= request.getParameter("origen")%>&destination=<%= request.getParameter("destino")%>&avoid=tolls|highways">
 	</iframe>
 	
+	<a href="inicio">Inicio</a>
+	
 	</div>
 
 </body>
